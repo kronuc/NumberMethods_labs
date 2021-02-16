@@ -31,9 +31,33 @@ def halfDivisionMethod(function, segment, deviation):
             midle = (lower + higer) / 2 
     return midle
 
+def newtonMethod(function, functionSignature, current, deviation):
+    next = current - function(current) / functionSignature(current)
+    while abs(function(next) - function(current)) > deviation:
+        current = next
+        next = current - function(current) / functionSignature(current)
+    return next    
+
+def iterationMethod(funuction, number, deviation):
+    current = number
+    next = funuction(number)
+    while abs(current - next) > deviation:
+        current = next 
+        next = funuction(current)
+    return next
 seg = [-1.0, 0.0]
 
 def example(x):
     return x**5 - 7 * x**2 + 3
 
+def exampleSignature(x):
+    return 5 * x**4 - 14 * x 
+
+def exampleRevers(x):
+    return -(-3 / (x**3 - 7))**0.5
+
 print(halfDivisionMethod(example, seg, 0.00001))
+
+print(newtonMethod(example, exampleSignature, -0.6, 0.00001))
+
+print(iterationMethod(exampleRevers, -0.6, 0.00001))
