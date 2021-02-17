@@ -14,3 +14,4 @@ ax.plot(x2,y2)
 ax.set(xlabel='x', ylabel='y')
 ax.grid()
 plt.show()
+pr
