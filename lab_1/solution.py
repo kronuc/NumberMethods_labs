@@ -45,19 +45,30 @@ def iterationMethod(funuction, number, deviation):
         current = next 
         next = funuction(current)
     return next
-seg = [-1.0, 0.0]
-
+seg_1 = [-1.0, 0.0]
+seg_2 = [0.0, 1.0]
 def example(x):
     return x**5 - 7 * x**2 + 3
 
 def exampleSignature(x):
     return 5 * x**4 - 14 * x 
 
-def exampleRevers(x):
+def exampleRevers_1(x):
     return -(-3 / (x**3 - 7))**0.5
 
-print(halfDivisionMethod(example, seg, 0.00001))
 
+def exampleRevers_2(x):
+    return (-3 / (x**3 - 7))**0.5
+
+
+print("half division method")
+print(halfDivisionMethod(example, seg_1, 0.00001))
+print(halfDivisionMethod(example, seg_2, 0.00001), "\n")
+
+print("newton nethod")
 print(newtonMethod(example, exampleSignature, -0.6, 0.00001))
+print(newtonMethod(example, exampleSignature, 0.6, 0.00001), "\n")
 
-print(iterationMethod(exampleRevers, -0.6, 0.00001))
+print("iteration method")
+print(iterationMethod(exampleRevers_1, -0.6, 0.00001))
+print(iterationMethod(exampleRevers_2, 0.6, 0.00001), "\n")

@@ -2,10 +2,10 @@ import matplotlib
 import matplotlib.pyplot as plt
 import numpy as np 
 
-x1 = np.arange(-1.0, 0.0, 0.005)
+x1 = np.arange(-1.0, 1.0, 0.005)
 y1 = 7 * np.power(x1,2) - 3
 
-x2 = np.arange(-1.0, 0.0, 0.005)
+x2 = np.arange(-1.0, 1.0, 0.005)
 y2 = np.power(x2,5) 
 
 fig, ax = plt.subplots()
