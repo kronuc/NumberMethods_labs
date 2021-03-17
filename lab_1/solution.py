@@ -45,8 +45,11 @@ def iterationMethod(funuction, number, deviation):
         current = next 
         next = funuction(current)
     return next
+
+# test of methods
 seg_1 = [-1.0, 0.0]
 seg_2 = [0.0, 1.0]
+
 def example(x):
     return x**5 - 7 * x**2 + 3
 
@@ -55,7 +58,6 @@ def exampleSignature(x):
 
 def exampleRevers_1(x):
     return -(-3 / (x**3 - 7))**0.5
-
 
 def exampleRevers_2(x):
     return (-3 / (x**3 - 7))**0.5
