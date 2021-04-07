@@ -73,7 +73,7 @@ values_x_2 = [-2, -1, 0.2, 1]
 
 l_polinom_1 = LagrangeMethod(values_x_1, function)
 n_polinom_1 = NevtonMethod(values_x_1, function)
-values_fror_plot_X = [x*0.01 for x in range(-200, 100)]
+values_fror_plot_X = [x*0.01 for x in range(610, 900)]
 values_fror_plot_1 = [l_polinom_1(x) for x in values_fror_plot_X]
 values_fror_plot_2 = [n_polinom_1(x) for x in values_fror_plot_X]
 values_fror_plot_3 = [function(x) for x in values_fror_plot_X]
@@ -86,7 +86,7 @@ plt.show()
 l_polinom_2 = LagrangeMethod(values_x_2, function)
 n_polinom_2 = NevtonMethod(values_x_2, function)
 
-values_fror_plot_X = [x*0.01 for x in range(-200, 100)]
+values_fror_plot_X = [x*0.01 for x in range(610, 900)]
 values_fror_plot_1 = [l_polinom_2(x) for x in values_fror_plot_X]
 values_fror_plot_2 = [n_polinom_2(x) for x in values_fror_plot_X]
 values_fror_plot_3 = [function(x) for x in values_fror_plot_X]
