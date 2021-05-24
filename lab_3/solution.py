@@ -9,6 +9,7 @@ class Equation:
         self.intervals = [(values_x[i - 1],values_x[ i ]) for i in range(1, len(values_x))]
         self.values_h = 1
         self.CountQ()
+        self.coef
     
     def CountQ(self):
         amountOfX = len(self.values_x)
@@ -31,9 +32,9 @@ class Equation:
         for i in range(1, amountOfX - 2):
             coef[i]["c"] = self.values_h / 6
         
-        coef[1]["A"] = coef[1]["c"] / coef[1]["b"] 
+        coef[1]["A"] = - coef[1]["c"] / coef[1]["b"] 
         for i in range(2, amountOfX - 1):
-            coef[i]["A"] = coef[i]["c"] / (coef[i]["b"] + coef[i]["a"] * coef[i - 1]["A"])
+            coef[i]["A"] = - coef[i]["c"] / (coef[i]["b"] + coef[i]["a"] * coef[i - 1]["A"])
         
         coef[1]["B"] = coef[1]["d"] / coef[i]["b"]
         for i in range(2, amountOfX - 1):
@@ -41,6 +42,7 @@ class Equation:
         
         for i in range(amountOfX - 2, 0, -1):
             self.Qs[i] = coef[i]["A"] * self.Qs[i + 1] + coef[i]["B"]
+        self.coef = coef
 
     def __call__(self, x):
 
@@ -54,7 +56,7 @@ class Equation:
 
     def CountForInterval(self, x, intervalNumber):
         i = intervalNumber
-        return  - (
+        return  (
             (((self.Qs[i] * (self.values_x[i + 1] - x) ** 3) / 6 * self.values_h)) +  
             ((self.Qs[i + 1] * (x - self.values_x[i]) ** 3) / 6 * self.values_h) +
             (((self.values_y[i] / self.values_h) - self.Qs[i] * (self.values_h / 6)) * (self.values_x[i + 1] - x)) + 
@@ -66,13 +68,16 @@ class Equation:
 
 
 #example
-x = [-1.2, -0.7, -0.2, 0.3, 0.8]
-y = [0.43372, 0.24333, 0.032749, 0.12149, 1.4243]
+x = [-2.0, -1.0, 0.0, 1.0, 2.0]
+y = [-0.27067, -0.36788, 0.0, 2.71183, 14.778]
 point = -0.5
 equaition = Equation(x, y)
 
-values_fror_plot_X = [x*0.1 for x in range(10, 50)]
+values_fror_plot_X = [x*0.1 for x in range(-22, 22)]
 values_fror_plot_1 = [equaition(x) for x in values_fror_plot_X]
+
+point = -0.5
+
 plt.plot(values_fror_plot_X, values_fror_plot_1)
 plt.show()
 print(equaition(point))
